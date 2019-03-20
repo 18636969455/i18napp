@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+ 
+    
+ 
+    <body>
+ 
+        
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+            mui.init()
+
+            //plusReady，用来定义加载dom后的操作
+            mui.plusReady(function() {
+                
+                //发起 ajax请求，地址使用知乎日报 api 
+                mui.ajax('https://news-at.zhihu.com/api/4/theme/11', {
+                    /* data 是参数，我们这里不需要，我们只是从 api获取数据
+                    data: {
+                        username: 'username',
+                        password: 'password'
+                    },
+                    */
+                    dataType: 'json', //服务器返回json格式数据
+                    type: 'get', //HTTP请求类型
+                    timeout: 10000, //超时时间设置为10秒；
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    success: function(data) {
+                        //服务器返回响应，根据响应结果，分析是否登录成功；
+                        
+                        //我们现在控制台打印一下请求结果
+                        console.log(data)
+                
+                        //然后获取json数据中的具体值
+                        console.log(data.stories[0].title)
+                    },
+                    error: function(xhr, type, errorThrown) {
+                        //异常处理；
+                        console.log(type);
+                    }
+                });
+
+            })
+        </script>
+ 
+    </body>
+ 
+ 
+</html>

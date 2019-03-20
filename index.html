@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<!-- <link href="css/mui.min.css" rel="stylesheet" /> -->
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/app.css" rel="stylesheet" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />-->
+	</head>
+	<body class="zh">
+		<div data-lang="string_title">
+			测试语言
+		</div>
+		<form class="mui-input-group">
+			<div class="mui-input-row">
+				<label>用户名</label>
+				<input id="email" data-i18n-placeholder="title" type="text" id="email" class="mui-input-clear mui-content" placeholder="请输入邮箱">
+				<!-- <input type="text" name="" id="email" value="" oninput="value=value.replace(/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi,'')"/> -->
+			</div>
+			<div class="mui-input-row mui-password mui-content">
+				<label>密码</label>
+				<input id="placeHo" name="mui" type="password" class="mui-input-password" placeholder="请输入密码">
+			</div>
+			<button data-lang="string_lang" id='showUserPicker' class="mui-btn mui-btn-block" type='button'>中文简体</button>
+			<div id='userResult' class="ui-alert"></div>
+			<div class="mui-button-row">
+				<button data-lang="string_lang3" type="button" id="logo">登录</button>
+			</div>
+			<div class="mui-button-row">
+				<button data-lang="string_lang4" type="button" class="mui-btn mui-btn-danger" onclick="return false;">注册</button>
+			</div>
+		</form>
+		<div class="mui-button-row">
+			<button data-lang="string_lang5" type="button" id="forgetPassword">忘记密码</button>
+		</div>
+		<div class="mui-button-row">
+			<button data-lang="string_lang6" type="button" id="demoLogin">演示登录</button>
+		</div>
+		<!-- <input class="typeahead" type="text" id="menu_search" data-i18n-placeholder = "searchPlaceholder"/> -->
+		<!-- <input class="typeahead" type="text" id="menu_search" data-i18n-placeholder = "searchPlaceholder"/> -->
+		<!-- <input class="typeahead" type="text" id="menu_search" data-i18n-placeholder = "searchPlaceholder"/> -->
+		
+		
+		<!-- 加载中动画
+		<div class="mui-loading">
+			<div class="mui-spinner"></div>
+			<div class="oo">
+				等待中
+			</div>
+		</div> -->
+
+
+		<!-- 引入mui框架 -->
+		<script src="js/mui.min.js"></script>
+
+		<!-- 语言引入 -->
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery.json-2.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.i18n.properties.min.js"></script>
+
+		<!-- 选择器引入 -->
+		<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- 语言复用组件 -->
+		<script src="js/setLanguage.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- 选择语言 -->
+		<script src="js/languageChoice.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- 用户名密码验证 -->
+		<script src="js/LoginAuthentication.js" type="text/javascript" charset="utf-8"></script>
+
+		<!-- 页面传值 -->
+		<!-- <script src="js/passValue.js" type="text/javascript" charset="utf-8"></script> -->
+		
+		<script type="text/javascript">
+			// 跳转到菜单页面
+			mui.plusReady(function () {
+			var passLang ;
+				document.getElementById("logo").addEventListener("tap", function() {
+					passLang = document.body.className.substring(0, 2)
+					mui.openWindow({
+						url: "../html/homePage.html",
+						id: "1",
+						waiting: {
+							autoShow: false
+						},
+						extras: {
+							name: passLang
+						}
+					});
+				});
+			});
+			
+		</script>
+		
+
+	</body>
+</html>

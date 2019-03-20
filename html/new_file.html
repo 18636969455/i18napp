@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+		<title>修改密码</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/app.css">
+		<!-- <link rel="stylesheet" href="../css/password_change.css" /> -->
+		<!-- <link rel="stylesheet" href="../css/iscroll.css" /> -->
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="display: block;height: 64px;padding-top:20px">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">修改密码</h1>
+		</header>
+		<div id="wrapper">
+			<div id="scroller" style="transform-origin: 0px 0px 0px; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+				<div class="mui-content" style="padding-top: 64px;">
+					<div class="mui-content-padded" style="margin: 0px;margin-top: 14px">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="password" class="mui-input-clear" placeholder="请输入旧密码" id="oldpwd">
+							</div>
+							<div class="mui-input-row">
+								<input type="password" class="mui-input-clear" placeholder="请输入新密码" id="newpwd">
+							</div>
+							<div class="mui-input-row">
+								<input type="password" class="mui-input-clear" placeholder="请再次输入新密码" id="newpwdagain">
+							</div>
+						</form>
+					</div>
+					<button type="button" class="mui-btn mui-btn-primary mui-btn-block content_btn" onclick="submit()">完成</button>
+				</div>
+
+			</div>
+		</div>
+		<script src="../js/mui.min.js "></script>
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script>
+			//跳转页面方法
+			function showpage(x, y) {
+				mui.openWindow({
+					url: x,
+					id: y,
+					preload: true,
+					show: {
+						aniShow: ‘pop - in ‘
+					},
+					styles: {
+						popGesture: ‘hide‘
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			}
+		</script>
+		<!-- <script type="text/javascript" src="js/iscroll.js"></script> -->
+		<script type="text/javascript">
+			//调用下拉滑动弹回效果
+			var Scroll = new iScroll(‘wrapper‘, {
+				vScroll: true,
+				hScrollbar: false
+			});
+			//ajax异步请求验证与修改密码
+			function submit() {
+				//开始传值请求
+				var guid = "501A73825438A410E050007F01003B83";
+				var OldPass = $(‘#oldpwd‘).val();
+				var NewPass = $(‘#newpwd‘).val();
+				var url = "这里放后台给你的借口地址URL哦！！！"
+				//首先判断密码框是否为空
+				var newpwdagain = $(‘#newpwdagain‘).val();
+				if (OldPass == "") {
+					alert(‘旧密码不能为空‘);
+				}
+				if (NewPass == "" || newpwdagain == "") {
+					alert(‘新密码不能为空‘);
+				} else {
+					$.ajax({
+						type: "post",
+						url: url,
+						success: function(result) {
+							result = result.trim();
+							result = result.replace(/\n/g, ‘‘);
+							alert(result);
+						}
+					});
+				}
+
+			}
+		</script>
+
+
+	</body>
+</html>
